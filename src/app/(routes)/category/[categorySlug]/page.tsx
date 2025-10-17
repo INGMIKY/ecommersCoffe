@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { ResponseType } from "@/types/response";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/router";
-import { use } from "react";
+import { use, useState } from "react";
 import FiltersControlsCategory from "../components/FiltersControlsCategory";
 import SkeletonSchema from "@/components/SkeletonSchema";
 import ProductCard from "../components/ProductCard";
@@ -15,7 +15,16 @@ const Page = () => {
     const { categorySlug }= params;
     const {result, loading}: ResponseType = useGetCategoryProduct(categorySlug);
     // const router = useRouter();
-    console.log(result);
+    
+    const [filterOrigin, setFilterOrigin] = useState('');
+    // console.log(filterOrigin)
+
+    const filteresProducts = result != null && !loading && (
+        filterOrigin == '' ? result : result.filter((product: ProductType)=> product.origin === filterOrigin)
+    )
+
+    console.log(filteresProducts);
+
 
     return (
         <div className="max-w-6xl py-4 mx-auto sm:py-16 sm:px-24">
@@ -26,16 +35,20 @@ const Page = () => {
             <Separator />
 
             <div className="sm:flex sm:justify-between">
-                <FiltersControlsCategory />
+                <FiltersControlsCategory setFilterOrigin={setFilterOrigin}/>
 
                 <div className="grid gap-5 mt-8 sm:grid-cols-2  md:grid-cols-3 md:gap-10">
                     {loading && (
                         <SkeletonSchema grid={3}/>
                     )}
-                    {result != null && !loading && (
-                        result.map((product:ProductType) => (
+                    {filteresProducts != null && !loading && (
+                        filteresProducts.map((product:ProductType) => (
                             <ProductCard key={product.id} product={product}/>
                         ))
+                    )}
+
+                    {filteresProducts != null && !loading && filteresProducts.length == 0 && (
+                            <p>No hay productos con este filtro.</p>
                     )}
                 </div>
             </div>
