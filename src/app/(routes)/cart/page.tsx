@@ -14,7 +14,7 @@ const Page = () => {
 
 
     return (
-        <div className="max-2-6xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+        <div className="max-w-6xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
             <h1 className="mb-5 text-3xl font-bold">Shopping cart</h1>
             <div className="grid sm:grid-cols-2 sm:gap-5">
                 <div>
