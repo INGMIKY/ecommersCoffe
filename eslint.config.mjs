@@ -14,7 +14,7 @@ export default [
   ...compat.extends(
     // 'airbnb',
     // 'airbnb-typescript/base',
-    'plugin:prettier/recommended',
+    // 'plugin:prettier/recommended',
     'next/core-web-vitals',
     'next/typescript'
   ),
@@ -27,7 +27,7 @@ export default [
       'next-env.d.ts',
     ],
     rules: {
-      'prettier/prettier': 'error',
+      // 'prettier/prettier': 'error',
     },
   },
 ];
