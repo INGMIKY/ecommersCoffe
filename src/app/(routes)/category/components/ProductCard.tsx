@@ -6,7 +6,7 @@ import { formatPrice } from "@/lib/formatPrice";
 import { ProductType } from "@/types/product";
 import { Expand, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import router from "next/router";
 
 type ProductCardProps = {
     product: ProductType
