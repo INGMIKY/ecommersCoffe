@@ -12,6 +12,9 @@ const compat = new FlatCompat({
 
 export default [
   ...compat.extends(
+    
+    'airbnb-typescript/base',
+    'plugin:prettier/recommended',
     'next/core-web-vitals',
     'next/typescript'
   ),
@@ -24,7 +27,7 @@ export default [
       'next-env.d.ts',
     ],
     rules: {
-      // Puedes agregar reglas extra aquí si las necesitas
+      'prettier/prettier': 'error',
     },
   },
 ];
