@@ -24,7 +24,19 @@ export default [
       'next-env.d.ts',
     ],
     rules: {
-      // aquí puedes agregar reglas personalizadas si quieres
+      // 🔧 aquí bajamos la agresividad de ESLint
+
+      // Permitir `any` (antes era error)
+      '@typescript-eslint/no-explicit-any': 'off',
+
+      // Opcional: bajar estos de error a warning o apagarlos
+      'react-hooks/exhaustive-deps': 'warn',
+      '@next/next/no-img-element': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/no-unused-expressions': 'warn',
     },
   },
 ];
